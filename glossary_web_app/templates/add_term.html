@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Yeni Terim Ekle</h2>
+    <form method="POST">
+        <label for="english_term">İngilizce Terim:</label>
+        <input type="text" id="english_term" name="english_term" required>
+        
+        <label for="english_definition">İngilizce Tanım:</label>
+        <textarea id="english_definition" name="english_definition" required></textarea>
+        
+        <label for="turkish_definition">Türkçe Tanım:</label>
+        <textarea id="turkish_definition" name="turkish_definition" required></textarea>
+        
+        <button type="submit">Kaydet</button>
+    </form>
+{% endblock %}

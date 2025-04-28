@@ -1,0 +1,77 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #333; /* Dark grey background */
+    color: #f9f9f9; /* Light text color for contrast */
+}
+
+/* Container style to match the body's background and slightly lighter shade */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #444; /* Slightly lighter grey for container */
+    color: #f9f9f9; /* Ensure text inside container is light to contrast the dark background */
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #f9f9f9; /* Light text for header against dark grey background */
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #f9f9f9; /* Match header's general text color */
+}
+
+/* Glossary Items */
+.glossary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.glossary-item {
+    background: #555; /* A bit lighter than the container for better contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.pagination-link, .pagination-current {
+    padding: 10px 15px;
+    color: #fff; /* White text for contrast */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transitions for hover effect */
+}
+
+.pagination-link:hover {
+    background: #f9f9f9; /* White on hover to indicate interaction */
+    color: #333; /* Dark text against white background */
+}
+
+.pagination-current {
+    background: #777; /* Slightly lighter than the container for contrast */
+    color: #fff; /* Ensure current page indicator is light */
+}

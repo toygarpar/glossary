@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Terimler Sözlüğü</title>
+    <link rel="stylesheet" href="glossary_web_app/static/fancystyle.css">
+    <script>
+        function searchGlossary() {
+            let loadingIndicator = document.getElementById('loadingIndicator');
+            loadingIndicator.style.display = 'block';
+        
+            setTimeout(() => {
+                let input = document.getElementById('searchInput').value.toLowerCase();
+                let items = document.getElementsByClassName('glossary-item');
+                let noResults = true;
+        
+                for (let i = 0; i < items.length; i++) {
+                    let term = items[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                    if (term.includes(input)) {
+                        items[i].style.display = '';
+                        noResults = false;
+                    } else {
+                        items[i].style.display = 'none';
+                    }
+                }
+        
+                let noResultsMessage = document.getElementById('noResultsMessage');
+                if (noResults && input.trim() !== '') {
+                    noResultsMessage.style.display = 'block';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                }
+        
+                loadingIndicator.style.display = 'none';
+            }, 300); // Simulate a slight delay
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Glossary - Terimler Sözlüğü</h1>
+            <input type="text" id="searchInput" onkeyup="searchGlossary()" placeholder="Search terms/Terim Arama" class="search-bar">
+        </header>
+
+        <div id="noResultsMessage" style="display: none; text-align: center; margin-top: 20px; color: #e74c3c;">
+            No matching terms found. /Eşleşen bir terim bulunamadı.
+        </div>
+
+        <div id="loadingIndicator" style="display: none; text-align: center; margin-top: 20px;">
+            <span>Loading...Please Wait! Yükleniyor, lütfen bekleyin!</span>
+        </div>
+
+        <!-- Glossary List -->
+        <div class="glossary">
+            {% for term, data in terms %}
+                <div class="glossary-item">
+                    <h2>{{ term }}</h2>
+                    <p><strong>English:</strong> {{ data['english_definition'] }}</p>
+                    <p><strong>Türkçe:</strong> {{ data['turkish_definition'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        <footer class="pagination">
+            {% if page > 1 %}
+                <a href="{{ 'index.html' if page == 2 else 'page' ~ (page-1) ~ '.html' }}" class="pagination-link">Previous/Önceki</a>
+            {% endif %}
+
+            {% for p in range(1, total_pages + 1) %}
+                {% if p == page %}
+                    <span class="pagination-current">{{ p }}</span>
+                {% else %}
+                    <a href="{{ 'index.html' if p == 1 else 'page' ~ p ~ '.html' }}" class="pagination-link">{{ p }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page < total_pages %}
+                <a href="{{ 'page' ~ (page+1) ~ '.html' }}" class="pagination-link">Next/Sonraki</a>
+            {% endif %}
+        </footer>
+    </div>
+</body>
+</html>

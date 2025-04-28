@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="export-container">
+        <div class="export-actions">
+            <a href="{{ url_for('export') }}?download=true" class="btn-export">HTML Dosyasını İndir</a>
+            <a href="{{ url_for('index') }}" class="btn-back">Listeye Dön</a>
+        </div>
+
+        <div class="glossary-preview">
+            <table>
+                <tr>
+                    <th>İngilizce Terim</th>
+                    <th>İngilizce Tanım</th>
+                    <th>Türkçe Tanım</th>
+                </tr>
+                {% for term, definitions in glossary %}
+                <tr>
+                    <td>{{ term }}</td>
+                    <td>{{ definitions.english_definition }}</td>
+                    <td>{{ definitions.turkish_definition }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

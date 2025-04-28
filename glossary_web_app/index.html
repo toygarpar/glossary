@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary</title>
+    <link rel="stylesheet" href="static/fancystyle.css">
+    <script>
+        function searchGlossary() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let items = document.getElementsByClassName('glossary-item');
+            for (let i = 0; i < items.length; i++) {
+                let term = items[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                if (term.includes(input)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Glossary</h1>
+            <input type="text" id="searchInput" onkeyup="searchGlossary()" placeholder="Search terms..." class="search-bar">
+        </header>
+
+        <!-- Glossary List -->
+        <div class="glossary">
+            
+                <div class="glossary-item">
+                    <h2>deneme</h2>
+                    <p><strong>English:</strong> deneme 1234</p>
+                    <p><strong>Turkish:</strong> deneme 123456</p>
+                </div>
+            
+                <div class="glossary-item">
+                    <h2>deneme2</h2>
+                    <p><strong>English:</strong> deneme 126546545</p>
+                    <p><strong>Turkish:</strong> deneme 546544656</p>
+                </div>
+            
+        </div>
+
+        <!-- Pagination -->
+        <footer class="pagination">
+            
+
+            
+                
+                    <span class="pagination-current">1</span>
+                
+            
+
+            
+        </footer>
+    </div>
+</body>
+</html>

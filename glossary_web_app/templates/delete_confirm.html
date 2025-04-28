@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Terim Silme Onayı</h2>
+    <div class="confirmation-box">
+        <p>"{{ term }}" terimini silmek istediğinize emin misiniz?</p>
+        <form method="POST">
+            <button type="submit" class="btn btn-danger">Evet, Sil</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+{% endblock %}
